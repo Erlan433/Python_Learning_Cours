@@ -6,6 +6,24 @@
     - [x] реализовать удаление задачи
 """
 
+def show_message (choise):
+    match choise:
+        case "2":
+            print('Задача успешно добавлена!')
+        case "3":
+            print('Задача успешно изменена!')
+        case "4":
+            print('Задача успешно удалена!')
+    
+    
+def show_collection (collections):
+    for key, item in enumerate(collections):
+        print(f"{key+1}) {item}")
+        
+def error_msg ():
+    print("Ошибка! Такого номера задачи нет!")
+
+
 is_run = True
 collections = []
 
@@ -20,30 +38,34 @@ while is_run:
     choise = input("Ваш выбор: ")
     match choise:
         case "1":
-            for key, item in enumerate(collections):
-                print(key+1, item)
+            show_collection(collections)
+            
         case "2":
             collections.append(input("Введите название задачи: "))
+            show_message(choise)
+            
         case "3":
-            for key, item in enumerate(collections):
-                print(key + 1, item)
+            show_collection(collections)
             try:
                 select_edit = int(input("Введите номер задачи: "))
                 edit_name = input("Введите новое имя задачи: ")
                 collections[select_edit - 1] = edit_name
+                show_message(choise)
             except:
-                print("Ошибка! Такого номера задачи нет!")
+                error_msg()
+                
         case "4":
-            for key, item in enumerate(collections):
-                print(key + 1, item)
+            show_collection(collections)
             try:
                 delete_edit = int(input("Введите номер задачи: "))
                 collections.pop(delete_edit - 1)
+                show_message(choise)
             except:
-                print("Ошибка! Такого номера задачи нет!")
+                error_msg()
 
         case "5":
             is_run = False
             print("Прощай")
+            
         case _:
             print("Такого пункта нету")
