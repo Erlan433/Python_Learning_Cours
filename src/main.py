@@ -39,10 +39,11 @@
     создать модули и сделать review code
 
 """
-from app import app
+from interface_TM import Interface
 
 def main():
-    app()
+    interface = Interface()
+    interface.root.mainloop()
 
 if __name__ == '__main__':
     main()
