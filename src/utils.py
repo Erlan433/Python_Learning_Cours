@@ -34,11 +34,11 @@ def get_base_dir():
 
 def ensure_save_file(file_name=None):
     if file_name is None:
-        file_name = os.path.join(get_base_dir(), "saves.txt")
+        file_name = os.path.join(get_base_dir(), "saves.json")
 
     if not os.path.exists(file_name):
-        with open(file_name, "w", encoding="utf-8"):
-            pass
+        with open(file_name, "w", encoding="utf-8") as file:
+            file.write("[]")
 
     return file_name
 

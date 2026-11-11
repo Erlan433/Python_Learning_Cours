@@ -3,13 +3,19 @@
     =========================================================
 """
 
-"""загрузка"""
+import json
 
 
 def load_collection(task_list, file_name):
-    with open(file_name, "r", encoding="utf-8") as file:
-        for line in file:
-            task_list.append(line.strip())
+    try:
+        with open(file_name, "r", encoding="utf-8") as file:
+            saved_tasks = json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        saved_tasks = []
+
+    if isinstance(saved_tasks, list):
+        task_list.extend(saved_tasks)
+
     return task_list
 
 
@@ -17,6 +23,5 @@ def load_collection(task_list, file_name):
 
 
 def save_collection(task_list, file_name):
-    with open(file_name, 'w', encoding='utf-8') as file:
-        for task in task_list:
-            file.writelines(f"{task}\n")
+    with open(file_name, "w", encoding="utf-8") as file:
+        json.dump(task_list, file, ensure_ascii=False, indent=2)
