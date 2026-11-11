@@ -42,7 +42,6 @@
 from app import app
 
 def main():
-    print("Я устал работать спаси меня это я компьютер!")
     app()
 
 if __name__ == '__main__':
