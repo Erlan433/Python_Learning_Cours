@@ -25,7 +25,6 @@
 
 - [x] разработаны функции для цикла — функциональное программирование
 - [x] `show_collection` — вывод списка с нумерацией
-- [x] `show_message` — сообщение + пауза
 
 ---
 
@@ -40,7 +39,6 @@
 
 - [x] созданы методы сохранения и загрузки — файловые сохранения
 - [x] `storage.load_collection` / `storage.save_collection`
-- [x] `utils.ensure_save_file` — создаёт `saves.txt` при первом запуске
 - [x] `utils.get_base_dir` — работает и для `.py`, и для `.exe`
 
 ---
@@ -63,15 +61,12 @@
 ### ![v0.0.8](https://img.shields.io/badge/version-0.0.8-blue) — Контент задачи
 
 - [x] реализован функционал добавления контента задачи — имя + содержание
-- [x] формат хранения: `"имя описание"` одной строкой
 
 ---
 
 ### ![v0.0.9](https://img.shields.io/badge/version-0.0.9-blue) — Модульная разгрузка
 
-- [x] разгруппировка по модулям, тестирование всего функционала
 - [x] `config`, `utils`, `storage`, `view`, `core`, `app`, `main` — разделены
-- [x] docstring в каждом модуле
 
 ---
 
@@ -89,16 +84,12 @@
 - [x] архитектурная коррекция — модули в `src/` по директориям
 - [x] создание первичного GUI
 - [x] `src/` с `__init__.py`
-- [x] `src/ui/` с `__init__.py`
 - [x] перенос консольных модулей в `src/`
 
 ---
 
 ### ![v0.1.2](https://img.shields.io/badge/version-0.1.2-green) — Основные экраны Tkinter
 
-- [x] создание основных методов view-модуля с взаимодействиями через tkinter
-- [x] `init()` — создаёт `frame_menu` / `frame_tasks`
-- [x] `create_menu()` / `show_all_tasks()` — переключение экранов
 - [x] `show_tasks` через `Listbox`
 
 ---
@@ -106,14 +97,11 @@
 ### ![v0.1.3](https://img.shields.io/badge/version-0.1.3-orange) — Кастомные компоненты
 
 - [x] создание кастомных компонентов — `AppButton`
-- [x] `ui/Button.py` с `class AppButton(tk.Button)`
 - [x] `super().__init__` с `master`, `text`, `command`, `**kwargs`
-- [x] дефолты: `width=16`, `height=1`, `bg="#333333"`
-- [x] переопределение через `bg="red"` у кнопки «Выход» работает
 
 ---
 
-### v0.1.4 — Обновление Task Manager
+### ![v0.1.4](https://img.shields.io/badge/version-0.1.3-orange) — Обновление Task Manager
 
 - [x] созданы `AppLabel`, `AppButton` и `AppListbox`
 - [x] добавлены ввод и отображение задач в GUI
