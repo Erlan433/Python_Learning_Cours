@@ -1,50 +1,52 @@
 import tkinter as tk
+import math
 from pathlib import Path
 
 root = tk.Tk()
-root.geometry("300x360")
+root.geometry("500x500")
 root.title("Калькулятор")
 root.iconbitmap(Path(__file__).resolve().parent.parent / "assets" / "image.ico")
 
-operations = ["*", "/", "-", "+", "="]
-expression = ""
+buttons = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "/", "-", "+", "=", "C"]
+operations = ["*", "/", "-", "+"]
+expression = "0"
 
-text_input = tk.Label(root, text="", anchor="e", font=("Arial", 20), width=18)
-text_input.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
+text_input = tk.Label(root, text="0", anchor="e", font=("Arial", 20), width=25)
+text_input.place(x=45, y=30)
 
 
 def click_button(value):
     global expression
 
-    if value == "=":
+    if value == "C":
+        expression = "0"
+    elif value == "=":
         try:
             expression = str(eval(expression))
         except (SyntaxError, ZeroDivisionError):
             expression = "Ошибка"
+    elif expression == "0" and value not in operations:
+        expression = value
+    elif expression == "Ошибка" and value not in operations:
+        expression = value
     else:
         expression += value
 
     text_input.config(text=expression)
 
 
-for number in range(10):
-    row = number // 3 + 1
-    column = number % 3
+index = 0
+while index < len(buttons):
+    angle = math.radians(index * 360 / len(buttons) - 90)
+    x = 220 + 170 * math.cos(angle)
+    y = 280 + 170 * math.sin(angle)
     tk.Button(
         root,
-        text=str(number),
+        text=buttons[index],
         width=6,
         height=2,
-        command=lambda value=str(number): click_button(value),
-    ).grid(row=row, column=column, padx=2, pady=2)
-
-for index in range(len(operations)):
-    tk.Button(
-        root,
-        text=operations[index],
-        width=6,
-        height=2,
-        command=lambda value=operations[index]: click_button(value),
-    ).grid(row=index + 1, column=3, padx=2, pady=2)
+        command=lambda value=buttons[index]: click_button(value),
+    ).place(x=x, y=y)
+    index += 1
 
 root.mainloop()
