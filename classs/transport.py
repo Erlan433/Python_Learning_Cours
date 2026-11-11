@@ -5,3 +5,6 @@ class Transport:
 
     def move(self):
         return f"{self.name} движется со скоростью {self.speed} км/ч"
+
+    def get_info(self):
+        return f"Транспорт: {self.name}"

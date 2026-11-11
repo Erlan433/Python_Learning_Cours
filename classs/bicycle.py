@@ -6,5 +6,8 @@ class Bicycle(Transport):
         super().__init__(name, speed)
         self.gears = gears
 
-    def ring_bell(self):
-        return f"{self.name}: дзинь-дзинь!"
+    def move(self):
+        return f"Велосипед {self.name} едет со скоростью {self.speed} км/ч"
+
+    def get_info(self):
+        return f"Велосипед: {self.name}, передачи: {self.gears}"
